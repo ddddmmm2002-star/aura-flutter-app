@@ -9,6 +9,7 @@ class HealthCard extends StatelessWidget {
   final IconData icon;
   final Color color;
   final double progress;
+  final VoidCallback? onTap;
 
   const HealthCard({
     super.key,
@@ -18,11 +19,14 @@ class HealthCard extends StatelessWidget {
     required this.icon,
     required this.color,
     required this.progress,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return GestureDetector(
+      onTap: onTap,
+      child: Card(
       elevation: 2,
       shadowColor: Colors.black12,
       shape: RoundedRectangleBorder(
@@ -123,6 +127,7 @@ class HealthCard extends StatelessWidget {
             ),
           ],
         ),
+      ),
       ),
     );
   }
